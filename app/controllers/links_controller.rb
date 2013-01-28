@@ -22,7 +22,7 @@ class LinksController < ApplicationController
   end
 
   def redirect
-    link = Link.find(params[:id])
+    link = Link.find(Link.decode(params[:hash]))
     redirect_to(link.url)
   end
 
