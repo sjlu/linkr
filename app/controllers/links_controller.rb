@@ -21,6 +21,11 @@ class LinksController < ApplicationController
     end
   end
 
+  def redirect
+    link = Link.find(params[:id])
+    redirect_to(link.url)
+  end
+
   # GET /links/new
   # GET /links/new.json
   def new

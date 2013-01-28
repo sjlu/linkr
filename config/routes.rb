@@ -3,6 +3,7 @@ Linkr::Application.routes.draw do
 
   # Defaults
   match '/' => 'links#index'
+  match '/:id' => 'links#redirect'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
