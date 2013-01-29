@@ -8,11 +8,7 @@ class Form
 	listen: ->
 		$('#submit').click =>
 			url = $('#input').val()
-			@shorten(url) if @valid(url)
-
-	valid: (url) ->
-		return false if not url?
-		return /((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url) 
+			@shorten(url)
 
 	shorten: (url) ->
 		$('#output').fadeOut =>
@@ -24,9 +20,14 @@ class Form
 				dataType: "json"
 				success: (response) =>
 					@display(response.url)
+				error: (response) =>
+					@display_error($.parseJSON(response.responseText).url)
 
 	display: (url) ->
 		$('#output').html(url).fadeIn();
+
+	display_error: (errors) ->
+		$('#output').html("Error. [#{errors.join(', ')}]").fadeIn();
 
 $(document).ready -> 
 	form = new Form()

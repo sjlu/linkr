@@ -3,7 +3,7 @@ require 'base64'
 
 class Link < ActiveRecord::Base
   attr_accessible :url
-  validates :url, :presence => true
+  validates :url, :presence => true, :url => true
 
   def self.encode(value)
   	Base64.encode64(value.to_s)
