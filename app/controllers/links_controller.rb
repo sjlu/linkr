@@ -10,6 +10,12 @@ class LinksController < ApplicationController
     end
   end
 
+  # Custom redirect function
+  def redirect
+    link = Link.find(Link.decode(params[:hash]))
+    redirect(link)
+  end
+
   # GET /links/1
   # GET /links/1.json
   def show
@@ -48,7 +54,8 @@ class LinksController < ApplicationController
     @link = Link.new(params[:link])
 
     respond_to do |format|
-      if @link.save
+      if @link.save!
+        @link["url"] = "#{request.protocol}#{request.host_with_port}/#{Link.encode(@link.id)}"
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else

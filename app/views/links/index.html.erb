@@ -4,7 +4,6 @@
   <thead>
    <tr>
       <th>Hash</th>   
-      <th>Title</th>
       <th>Url</th>
       <th></th>
     </tr>
@@ -14,7 +13,6 @@
     <% @links.each do |link| %>
     <tr>
       <td><%= Link.encode(link.id) %></td>
-      <td><%= link.title %></td>
       <td><%= link.url %></td>
       <td>
         <%= link_to 'Show', link, :class => 'btn' %>

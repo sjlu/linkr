@@ -1,9 +1,10 @@
 Linkr::Application.routes.draw do
-  # resources :links
+  resources :links
 
   # Defaults
   match '/' => 'links#new'
-  match '/list' => 'links#index'
+  match '/show' => 'links#index'
+  match '/create' => 'links#create'
   match '/:hash' => 'links#redirect'
 
   # The priority is based upon order of creation:
