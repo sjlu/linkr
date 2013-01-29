@@ -15,18 +15,18 @@ class Form
 		return /((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url) 
 
 	shorten: (url) ->
-		$.ajax '/create.json'
-			type: "POST"
-			data:
-				link:
-					url: url
-			dataType: "json"
-			success: (response) =>
-				@display(response.url)
+		$('#output').fadeOut =>
+			$.ajax '/create.json'
+				type: "POST"
+				data:
+					link:
+						url: url
+				dataType: "json"
+				success: (response) =>
+					@display(response.url)
 
 	display: (url) ->
-		alert(url)
-		$('#output').html url
+		$('#output').html(url).fadeIn();
 
 $(document).ready -> 
 	form = new Form()
