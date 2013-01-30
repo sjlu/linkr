@@ -10,9 +10,20 @@ body {
 }
 
 code {
-	font-size: 16px;
+	font-size: 24px;
 }
 
 .input-append {
 	margin-bottom: 20px;
+
+	input {
+		font-size: 20px;
+		padding: 8px 6px;
+		line-height: 24px;
+	}
+}
+
+.btn {
+	font-size: 20px;
+	padding: 8px 16px;
 }
